@@ -82,6 +82,10 @@ module Hutch
     # is necessary to do a few things that are impossible over AMQP. E.g.
     # listing queues and bindings.
     def set_up_api_connection
+      puts api_config.username
+      puts api_config.proxy_port
+      puts api_config.proxy_host
+      puts 123123123
       logger.info "connecting to rabbitmq HTTP API (#{api_config.sanitized_uri})"
 
       with_authentication_error_handler do
