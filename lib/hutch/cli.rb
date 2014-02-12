@@ -143,11 +143,11 @@ module Hutch
         end
 
         opts.on("--proxy-host", 'Use an HTTP proxy for the RabbitMQ API') do |proxy_host|
-          Hutch::Config.proxy_host = proxy_host
+          Hutch::Config.proxy_host = '172.0.100.12'
         end
 
         opts.on("--proxy-port", 'Use an HTTP proxy port with the proxy host for the RabbitMQ API') do |proxy_port|
-          Hutch::Config.proxy_port = proxy_port
+          Hutch::Config.proxy_port = '3128'
         end
 
         opts.on('--config FILE', 'Load Hutch configuration from a file') do |file|
