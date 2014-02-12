@@ -88,7 +88,9 @@ module Hutch
         with_connection_error_handler do
           @api_client = CarrotTop.new(host: api_config.host, port: api_config.port,
                                       user: api_config.username, password: api_config.password,
-                                      ssl: api_config.ssl)
+                                      ssl: api_config.ssl,
+                                      proxy_host: api_config.proxy_host, proxy_port: api_config.proxy_port
+                                     )
           @api_client.exchanges
         end
       end
@@ -193,6 +195,8 @@ module Hutch
         config.username = @config[:mq_username]
         config.password = @config[:mq_password]
         config.ssl = @config[:mq_api_ssl]
+        config.proxy_host = @config[:proxy_host]
+        config.proxy_port = @config[:proxy_port]
         config.protocol = config.ssl ? "https://" : "http://"
         config.sanitized_uri = "#{config.protocol}#{config.username}@#{config.host}:#{config.port}/"
       end
