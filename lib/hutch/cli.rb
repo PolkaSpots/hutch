@@ -142,6 +142,14 @@ module Hutch
           Hutch::Config.mq_api_ssl = api_ssl
         end
 
+        opts.on("-s", "--proxy-host", 'Use an HTTP proxy for the RabbitMQ API') do |api_ssl|
+          Hutch::Config.proxy_host = proxy_host
+        end
+
+        opts.on("-s", "--proxy-port", 'Use an HTTP proxy port with the proxy host for the RabbitMQ API') do |api_ssl|
+          Hutch::Config.proxy_port = proxy_port
+        end
+
         opts.on('--config FILE', 'Load Hutch configuration from a file') do |file|
           begin
             File.open(file) { |fp| Hutch::Config.load_from_file(fp) }
