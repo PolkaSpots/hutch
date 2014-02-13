@@ -82,10 +82,6 @@ module Hutch
     # is necessary to do a few things that are impossible over AMQP. E.g.
     # listing queues and bindings.
     def set_up_api_connection
-      puts api_config.username
-      puts api_config.proxy_port
-      puts api_config.proxy_host
-      puts 123123123
       logger.info "connecting to rabbitmq HTTP API (#{api_config.sanitized_uri})"
 
       with_authentication_error_handler do
@@ -93,7 +89,7 @@ module Hutch
           @api_client = CarrotTop.new(host: api_config.host, port: api_config.port,
                                       user: api_config.username, password: api_config.password,
                                       ssl: api_config.ssl,
-                                      proxy_host: api_config.proxy_host, proxy_port: api_config.proxy_port
+                                      proxy_host: '172.0.100.12', proxy_port: 3128
                                      )
           @api_client.exchanges
         end
